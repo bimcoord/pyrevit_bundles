@@ -2,4 +2,6 @@
 __title__ = 'Export\nCSV'
 __doc__ = '''Define later in bundle.yaml'''
 
-#class or script ? 
+#class or script ?
+
+print("Hello, there!")
