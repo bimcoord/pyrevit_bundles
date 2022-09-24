@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from time import time
 __title__ = 'Export\nCSV'
 __doc__ = '''Define later in bundle.yaml'''
 # Template
@@ -26,21 +25,19 @@ if doc.IsFamilyDocument:
     columns = selected_size_table.NumberOfColumns
     rows = selected_size_table.NumberOfRows
     # Перебор
-
-    time_start = time()
-    
     def foo():
         _ret = ''
         for column in range(columns):
             _ret += ''.join([selected_size_table.AsValueString(row, column).ToString(), ';'])
         return _ret
-    
+
     returned_string = ''
     for row in range(rows):
         returned_string += ''.join([foo(),'\n'])
 
-    time_finish = time()
-    print(time_finish - time_start)
+    print(returned_string)
+
+    # Запись: 
 
     # Получение шапки таблица. Также под вопросом 
     # print(columns,rows)
