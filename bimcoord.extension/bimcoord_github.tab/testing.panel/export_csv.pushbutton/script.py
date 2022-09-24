@@ -25,34 +25,22 @@ if doc.IsFamilyDocument:
     # Размер таблицы:
     columns = selected_size_table.NumberOfColumns
     rows = selected_size_table.NumberOfRows
-    
-    # returned_string = ''
     # Перебор
-    def foo():
-        '''Функция для ускорения перебора элементов
-        '''
-        # global returned_string  
-        # def foo2():
-        #     global returned_string
-        #     for column in range(columns):
-        #         returned_string += str(selected_size_table.AsValueString(row, column)) + ";"
-        returned_string = ''
-        _t = [[r, c] for c in range(rows) for r in range(columns)]
-        for i,j in _t:
-            returned_string += str(selected_size_table.AsValueString(i, j)) + ";"
-        return returned_string
-        # for row in range(rows):
-        #     for column in range(columns):
-        #         returned_string += str(selected_size_table.AsValueString(row, column)) + ";"
-        #     returned_string += '\n'
-        # return returned_string
 
     time_start = time()
-    a = foo()
-    print(a)
+    
+    def foo():
+        _ret = ''
+        for column in range(columns):
+            _ret += ''.join([selected_size_table.AsValueString(row, column).ToString(), ';'])
+        return _ret
+    
+    returned_string = ''
+    for row in range(rows):
+        returned_string += ''.join([foo(),'\n'])
+
     time_finish = time()
     print(time_finish - time_start)
-
 
     # Получение шапки таблица. Также под вопросом 
     # print(columns,rows)
