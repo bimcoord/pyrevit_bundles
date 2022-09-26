@@ -11,8 +11,9 @@ doc = uidoc.Document
 
 __title__ = 'Экспорт\nCSV'
 __author__ = "@butiryc_acid" #TELEGRAM
-__doc__ = '''   Программа экспортирует таблицу поиска из семейства в корректном формате'''
+__doc__ = '''   Программа экспортирует таблицу поиска из семейства в корректном формате
 
+    Прим.: Для экспорта таблицы откройте необходимое семейство в редакторе семейств'''
 # Проверка на то, открыто ли семейство в редакторе семейств
 if doc.IsFamilyDocument:
     family_id = doc.OwnerFamily.Id
@@ -23,7 +24,11 @@ else:
 family_size_table_manager = DB.FamilySizeTableManager.\
     GetFamilySizeTableManager(doc, family_id) # Получение менеджера таблиц
 
-list_of_size_tables = list(family_size_table_manager.GetAllSizeTableNames())
+try:
+    list_of_size_tables = list(family_size_table_manager.GetAllSizeTableNames())
+except:
+    forms.Alert('В семействе отсутствуют таблицы поиска', title = __title__)
+    script.exit()
 
 selected_size_table_name = forms.SelectFromList(
     '''Выберите csv-таблицу для экспорта''',
