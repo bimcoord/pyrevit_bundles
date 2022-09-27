@@ -10,7 +10,7 @@ uidoc = __revit__.ActiveUIDocument
 doc = uidoc.Document
 
 __title__ = 'Экспорт\nCSV'
-__author__ = "@butiryc_acid" #TELEGRAM
+__author__ = "@butyric_acid" #TELEGRAM
 __doc__ = '''   Программа экспортирует таблицу поиска из семейства в корректном формате
 
     Прим.: Для экспорта таблицы откройте необходимое семейство в редакторе семейств'''
